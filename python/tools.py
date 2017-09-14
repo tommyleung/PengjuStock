@@ -9,5 +9,6 @@ xn(list="aaaa", node="node")
 
 #knn距离
 def knn(node1, node2):
+    
     print node1, node2
 knn(node1="node1", node2="node2")
