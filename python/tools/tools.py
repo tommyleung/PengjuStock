@@ -48,7 +48,7 @@ plt.plot(x, y, 'k', lw=3)
 plt.scatter(x, y_data)
 
 # 将当前figure的图保存到文件result.png
-plt.savefig('../result/result.png')
+plt.savefig('../../result/result.png')
 
 # 一定要加上这句才能让画好的图显示在屏幕上
 plt.show()
