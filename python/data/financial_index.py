@@ -21,7 +21,8 @@ data = urllib.urlencode(reqdata)
 stockCode = sys.argv[2]
 stockCodes = sys.argv[1] + sys.argv[2]
 
-finalcialUrl = 'https://xueqiu.com/stock/f10/finmainindex.json?symbol=' + stockCodes + '&page=1&size=500&_=1502605245564'
+finalcialUrl = 'https://xueqiu.com/stock/f10/finmainindex.json?symbol=' \
+               + stockCodes + '&page=1&size=500&_=1502605245564'
 httpMethod = 'GET'
 
 # 获取数据
