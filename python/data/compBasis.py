@@ -1,13 +1,9 @@
 # -*- coding: utf-8 -*-
 from __future__ import unicode_literals
 
-import httplib
-import urllib
-import json
-import MySQLdb
-import time
-import datetime
 import sys
+import urllib
+
 import rpc
 
 # 公司基本经营信息获取
