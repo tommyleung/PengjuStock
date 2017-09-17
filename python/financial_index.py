@@ -55,13 +55,13 @@ try:
         reportdate = i['reportdate'];
         reportSeason = ''
         if reportdate.find('0331') >= 0:
-            reportSeason = reportdate[0:4] + '年' + '1季度'
+            reportSeason = reportdate[0:4] + 'y' + '1s'
         elif reportdate.find('0631') >= 0:
-            reportSeason = reportdate[0:4] + '年' + '2季度'
+            reportSeason = reportdate[0:4] + 'y' + '2s'
         elif reportdate.find('0931') >= 0:
-            reportSeason = reportdate[0:4] + '年' + '3季度'
+            reportSeason = reportdate[0:4] + '-' + '3s'
         else:
-            reportSeason = reportdate[0:4] + '年' + '4季度'
+            reportSeason = reportdate[0:4] + 'y' + '4s'
 
         # 操作数据库
         cursor.execute(sql, (stockCode, '1', i['reportdate'], '每股收益', i['basiceps'], reportSeason))
