@@ -19,6 +19,7 @@ reqdata = {
 data = urllib.urlencode(reqdata)
 
 stockCode = sys.argv[2]
+stockType = sys.argv[1]
 stockCodes = sys.argv[1] + sys.argv[2]
 
 finalcialUrl = 'https://xueqiu.com/stock/f10/compinfo.json?symbol=' + stockCodes + '&page=1&size=4&_=150313634190'
@@ -66,13 +67,14 @@ try:
     print '开始更新数据......'
 
     # 删除数据
-    sql = 'delete from stock_financial_index where stock_code = %s'
-    cursor.execute(sql, (stockCode))
+    sql = 'delete from stock_info where stock_code = %s and stock_type = %s'
+    cursor.execute(sql, (stockCode, stockType))
     db.commit
 
-    for i in decode['list']:
-        cursor.execute(sql, (stockCode, '22', i['reportdate'], '期末现金及现金等价物余额', i['cashequfinbal'], reportSeason))
-        db.commit()
+    updateSql = 'insert into stock_info(stock_code, stock_name, stock_marketing, stock_industry, stock_type,' \
+                'company_name, company_intro, company_addr, major_business, )' \
+                ' values(%s, %s, %s, %s, %s, %s, %s, %s, %s)'
+    cursor.execute(sql, (stockCode))
 
 except Exception, e:
     print e
