@@ -27,16 +27,32 @@ httpMethod = 'GET'
 # 获取数据
 decode = rpc.getResponse(finalcialUrl, httpMethod, data)
 company = decode['tqCompInfo']
-# 公司地址
+
+#公司地址
 addr = company['officeaddr']
-# 公司名称
+officeAddr = company['officeaddr']
+
+#公司名称
 compname = company['compname']
-# 创建时间
+#公司简介
+companyIntro = company['compintro']
+#主营业务
+majorBusiness = company['majorbiz']
+
+#创建时间
 founddate = company['founddate']
+#组织类型
 orgtype = company['orgtype']
+#注册资金
 regcapital = company['regcapital'] * 10000
 
-print addr, compname, founddate, orgtype, regcapital
+print '地址:', addr
+print '公司名称:', compname
+print '成立日期:', founddate
+print '机构类型:', orgtype
+print '注册资本:', regcapital
+print '公司简介:', companyIntro
+print '主营业务:', majorBusiness
 
 quit()
 
