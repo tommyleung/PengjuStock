@@ -55,7 +55,7 @@ print '注册资本:', regcapital
 print '公司简介:', companyIntro
 print '主营业务:', majorBusiness
 
-quit()
+# quit()
 
 # 打开数据库连接
 db = rpc.getDBConnection()
@@ -72,14 +72,15 @@ try:
     db.commit
 
     updateSql = 'insert into stock_info(stock_code, stock_name, stock_marketing, stock_industry, stock_type,' \
-                'company_name, company_intro, company_addr, major_business, )' \
+                'company_name, company_intro, company_addr, major_business)' \
                 ' values(%s, %s, %s, %s, %s, %s, %s, %s, %s)'
-    cursor.execute(sql, (stockCode))
-
+    cursor.execute(updateSql, (stockCode, '', '', '', stockType, compname, companyIntro, addr, majorBusiness))
+    db.commit
+    print '操作结束'
 except Exception, e:
     print e
     db.rollback()
 finally:
     print '数据更新完毕......'
     cursor.close()
-    db.close();
+    db.close()
