@@ -7,3 +7,5 @@ python ../python/financial_index.py SZ 002561
 python ../python/financial_index.py SZ 002230
 #无锡银行
 python ../python/financial_index.py SH 600908
+#常熟银行
+python ../python/financial_index.py SH 601128
