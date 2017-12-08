@@ -12,7 +12,7 @@ import json
 def getHeaders():
     reqHeader = {
         'Host': 'xueqiu.com',
-        'Cookie': 'device_id=66c2d36007ff06e2686dc5555681b887; s=g413wj53q7; __utma=1.484125305.1503102157.1504957323.1505613645.9; __utmz=1.1503102157.1.1.utmcsr=(direct)|utmccn=(direct)|utmcmd=(none); aliyungf_tc=AQAAAJcGrVUIXAEAw0/EKp0QDgWVoXmf; xq_a_token=ed965d6ca0f68aa2f0b4a80a510e86fe5c02784d; xq_a_token.sig=4h-a7hDw5OAWxQatJglpF46pYf4; xq_r_token=fdcc8cfbe737cc4ba5146adb235fd757dc4acc3f; xq_r_token.sig=ZE73n9TV1mAyquMYb7qty1JIO_4; u=351506129464285; Hm_lvt_1db88642e346389874251b5a1eded6e3=1505547656,1505547665,1505613638,1506129465; Hm_lpvt_1db88642e346389874251b5a1eded6e3=1506129465'
+        'Cookie': 's=eu1a0y8gx5; device_id=d969dc896ad8a8f880e82525c396bcb9; __utma=1.1483386770.1502702541.1502702541.1502702541.1; __utmz=1.1502702541.1.1.utmcsr=(direct)|utmccn=(direct)|utmcmd=(none); aliyungf_tc=AQAAAL+9oXHrAgwA4rJfZc4EdPr2pash; xq_a_token=a8d434ddd975f5752965fa782596bd0b5b008376; xq_a_token.sig=ke78qTMMk1J4blZPe-jY53Uy9Ec; xq_r_token=437547d929e3cc54630bfd58136879694e1ae4a9; xq_r_token.sig=iYuNwCitZuVpyfkOu6_LLtaQn6E; u=711512698988819; Hm_lvt_1db88642e346389874251b5a1eded6e3=1511752664,1511854758,1512698990; Hm_lpvt_1db88642e346389874251b5a1eded6e3=1512698990'
     }
     return reqHeader
 
