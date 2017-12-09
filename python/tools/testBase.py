@@ -52,8 +52,11 @@ Tm = a.dot(Ta)
 
 # 智能学习包
 # 人工神经网络2个输入单元、3个隐藏层，1个输出单元
-net = buildNetwork(2, 3, 1)
-result = net.activate([2, 3])
+from pybrain.supervised.trainers import BackpropTrainer
+from pybrain.structure import TanhLayer
+
+#反向传播训练
+net = buildNetwork(2, 3, 1, bias=True, hiddenclass=TanhLayer)
 
 print net['in'], net['hidden0'], net['out']
 
@@ -66,12 +69,19 @@ ds.addSample((1, 1), (0,))
 print ds
 
 
-from pybrain.supervised.trainers import BackpropTrainer
-#开始训练
-trainer = BackpropTrainer(net, ds)
-print 'train result:', trainer.train()
 
-print net.activate([1, 1])
+#开始训练
+trainer = BackpropTrainer(net, ds, verbose=False, learningrate=0.01)
+# print trainer
+
+trainer.trainUntilConvergence(maxEpochs=100)
+# print 'net after trainer:\n', net
+
+print net.activate((0, 0)), ', real:0'
+print net.activate((0, 1)), ', real:1'
+print net.activate((1, 0)), ', real:1'
+print net.activate((1, 1)), ', real:0'
+
 
 
 
