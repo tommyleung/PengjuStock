@@ -2,7 +2,12 @@
 from __future__ import unicode_literals
 
 import numpy as np
+import sklearn as skl
 import numpy.linalg as npl
+import pybrain as pb
+
+from pybrain.tools.shortcuts import buildNetwork
+from pybrain.datasets import SupervisedDataSet
 
 print 'numpy version:' + np.__version__ + '\n'
 
@@ -34,15 +39,42 @@ list = range(10)
 # numpy矩阵运算
 # 矩阵定义
 a = np.array([[1, 0, 1], [1, 1, 1]])
-print '矩阵a:', a
+# print '矩阵a:', a
 
 # 矩阵转置
 Ta = a.transpose()
-print '矩阵a转置：', Ta
+# print '矩阵a转置：', Ta
 
 # 矩阵乘法
 Tm = a.dot(Ta)
-print '矩阵乘法a * Ta:', Tm
+# print '矩阵乘法a * Ta:', Tm
+
+
+# 智能学习包
+# 人工神经网络2个输入单元、3个隐藏层，1个输出单元
+net = buildNetwork(2, 3, 1)
+result = net.activate([2, 3])
+
+print net['in'], net['hidden0'], net['out']
+
+# 构建训练集, 输入2节点, 输出为1节点
+ds = SupervisedDataSet(2, 1)
+ds.addSample((0, 0), (0,))
+ds.addSample((0, 1), (1,))
+ds.addSample((1, 0), (1,))
+ds.addSample((1, 1), (0,))
+print ds
+
+
+from pybrain.supervised.trainers import BackpropTrainer
+#开始训练
+trainer = BackpropTrainer(net, ds)
+print 'train result:', trainer.train()
+
+print net.activate([1, 1])
+
+
+
 
 
 
