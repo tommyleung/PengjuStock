@@ -33,6 +33,16 @@ list = range(10)
 
 # numpy矩阵运算
 # 矩阵定义
+a = np.array([[1, 0, 1], [1, 1, 1]])
+print '矩阵a:', a
+
+# 矩阵转置
+Ta = a.transpose()
+print '矩阵a转置：', Ta
+
+# 矩阵乘法
+Tm = a.dot(Ta)
+print '矩阵乘法a * Ta:', Tm
 
 
 
