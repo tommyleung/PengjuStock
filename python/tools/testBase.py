@@ -96,6 +96,11 @@ print net.activate((1, 1)), ', real:2'
 from pybrain.structure import FeedForwardNetwork
 from pybrain.structure import LinearLayer, SigmoidLayer
 from pybrain.structure import FullConnection
+from pybrain.datasets import ClassificationDataSet
+from pybrain.utilities import percentError
+from pybrain.tools.shortcuts import buildNetwork
+from pybrain.supervised.trainers import BackpropTrainer
+from pybrain.structure.modules import SoftmaxLayer
 
 # create network
 fnn = FeedForwardNetwork()
@@ -127,7 +132,7 @@ print fnn.params
 
 #for i in range(0, 10):
     # fnn.reset()
-    #print 'active[2, 1]:', fnn.activate((2,1))
+    # print 'active[2, 1]:', fnn.activate((2,1))
 
 ds = SupervisedDataSet(2, 1)
 ds.addSample([0, 0], [0])
