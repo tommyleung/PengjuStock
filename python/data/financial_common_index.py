@@ -8,7 +8,7 @@ import time
 import rpc
 
 # 主要财务指标数据接口
-#print '更新公司财务数据:', str(sys.argv[1]), str(sys.argv[2])
+print '更新公司财务数据:', str(sys.argv[1]), str(sys.argv[2])
 
 # 参数
 reqdata = {
