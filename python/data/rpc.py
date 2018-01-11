@@ -4,15 +4,16 @@ from __future__ import unicode_literals
 import sys
 import httplib
 import urllib
-import MySQLdb
+# import MySQLdb
 import json
+import pymysql as mysql
 
 
 # 获取头部
 def getHeaders():
     reqHeader = {
         'Host': 'xueqiu.com',
-        'Cookie': 's=eu1a0y8gx5; device_id=d969dc896ad8a8f880e82525c396bcb9; __utma=1.1483386770.1502702541.1502702541.1502702541.1; __utmz=1.1502702541.1.1.utmcsr=(direct)|utmccn=(direct)|utmcmd=(none); aliyungf_tc=AQAAAL+9oXHrAgwA4rJfZc4EdPr2pash; xq_a_token=a8d434ddd975f5752965fa782596bd0b5b008376; xq_a_token.sig=ke78qTMMk1J4blZPe-jY53Uy9Ec; xq_r_token=437547d929e3cc54630bfd58136879694e1ae4a9; xq_r_token.sig=iYuNwCitZuVpyfkOu6_LLtaQn6E; u=711512698988819; Hm_lvt_1db88642e346389874251b5a1eded6e3=1511752664,1511854758,1512698990; Hm_lpvt_1db88642e346389874251b5a1eded6e3=1512698990'
+        'Cookie': 'device_id=d969dc896ad8a8f880e82525c396bcb9; __utma=1.1483386770.1502702541.1502702541.1502702541.1; __utmz=1.1502702541.1.1.utmcsr=(direct)|utmccn=(direct)|utmcmd=(none); aliyungf_tc=AQAAAP6pSQdNigAA4rJfZXiYiJCKRa3M; xq_a_token=93ef7d84fd99d7b5f81ea4e1442c7252dff29d20; xq_a_token.sig=2_cWCFNwc-q7CurYUzOoewHw_DM; xq_r_token=18ddc4996d6018b400ebaaaa74f144296c288826; xq_r_token.sig=7749cnGDm8cToOaVZtCC3FKmJys; u=501515634639072; Hm_lvt_1db88642e346389874251b5a1eded6e3=1515140029,1515634640,1515634646; Hm_lpvt_1db88642e346389874251b5a1eded6e3=1515634646'
     }
     return reqHeader
 
@@ -40,8 +41,11 @@ def getResponse(url, method, data):
 
 # 获取数据库连接
 def getDBConnection():
-    db = MySQLdb.connect('106.14.117.12', 'root', '123456', 'pengju_stock')
+    db = MySQLdb.connect(host='106.14.117.12:8100', user='root', passwd='123456', db='pengju_stock')
     return db
 
+def getPyMySQLConnection():
+    conn = mysql.connect(host='106.14.117.12', port=8100, user='root', password='123456', db='pengju_stock', charset='utf8mb4')
+    return conn
 
 print ''

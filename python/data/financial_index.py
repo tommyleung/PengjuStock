@@ -3,11 +3,12 @@ from __future__ import unicode_literals
 
 import sys
 import urllib
+import time
 
 import rpc
 
 # 主要财务指标数据接口
-print '更新股票财务数据:', str(sys.argv[1]), str(sys.argv[2])
+print '更新公司财务数据:', str(sys.argv[1]), str(sys.argv[2])
 
 # 参数
 reqdata = {
@@ -20,17 +21,19 @@ data = urllib.urlencode(reqdata)
 
 stockCode = sys.argv[2]
 stockCodes = sys.argv[1] + sys.argv[2]
+times = str(int(time.time()))
 
 #全量数据
 finalcialUrl = 'https://xueqiu.com/stock/f10/finmainindex.json?symbol=' \
-               + stockCodes + '&page=1&size=500&_=1502605245564'
+               + stockCodes + '&page=1&size=500&_=' + times
+
 httpMethod = 'GET'
 
 # 获取数据
 decode = rpc.getResponse(finalcialUrl, httpMethod, data)
 
 # 打开数据库连接
-db = rpc.getDBConnection()
+db = rpc.getPyMySQLConnection()
 
 # 使用cursor()方法获取操作游标 
 cursor = db.cursor()
@@ -54,9 +57,9 @@ try:
         reportSeason = ''
         if reportdate.find('0331') >= 0:
             reportSeason = reportdate[0:4] + 'y' + '1s'
-        elif reportdate.find('0631') >= 0:
+        elif reportdate.find('0630') >= 0:
             reportSeason = reportdate[0:4] + 'y' + '2s'
-        elif reportdate.find('0931') >= 0:
+        elif reportdate.find('0930') >= 0:
             reportSeason = reportdate[0:4] + '-' + '3s'
         else:
             reportSeason = reportdate[0:4] + 'y' + '4s'
