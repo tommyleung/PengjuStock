@@ -41,11 +41,11 @@ def getResponse(url, method, data):
 
 # 获取数据库连接
 def getDBConnection():
-    db = MySQLdb.connect(host='106.14.117.12:8100', user='root', passwd='123456', db='pengju_stock')
+    db = MySQLdb.connect()
     return db
 
 def getPyMySQLConnection():
-    conn = mysql.connect(host='106.14.117.12', port=8100, user='root', password='123456', db='pengju_stock', charset='utf8mb4')
+    conn = mysql.connect()
     return conn
 
 print ''
